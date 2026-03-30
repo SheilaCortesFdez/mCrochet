@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mCrochet | Tienda de muñecos de crochet</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧶</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <div id="app">
+    <header class="site-header">
+      <div class="logo">🧶 mCrochet</div>
+      <nav class="menu" aria-label="Principal">
+        <a href="#catalogo" data-i18n="navCatalogo">Catálogo</a>
+        <a href="#colecciones" data-i18n="navColecciones">Colecciones</a>
+        <a href="#contacto" data-i18n="navContacto">Contacto</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="colecciones">
+        <h1 data-i18n="heroTitle">Muñecos de crochet hechos a mano</h1>
+        <p data-i18n="heroDesc">Descubre piezas únicas para regalar, decorar o coleccionar. Cada muñeco se teje con mucho detalle y materiales suaves.</p>
+      </section>
+
+      <section class="toolbar" id="catalogo" aria-label="Filtros de catálogo">
+        <label><span data-i18n="labelBuscar">Buscar</span>
+          <input id="searchInput" type="search" data-i18n-placeholder="placeholderBuscar" placeholder="Ej: conejita, sirena..." />
+        </label>
+        <label><span data-i18n="labelPrecio">Precio máximo</span>
+          <input id="priceInput" type="range" min="20" max="50" step="1" value="50" />
+          <span id="priceValue">Hasta 50 €</span>
+        </label>
+        <div class="chips" id="categoryChips"></div>
+      </section>
+
+      <section class="products" id="productsGrid" aria-live="polite"></section>
+
+      <!-- Formulario de pedido -->
+      <section class="order-form-wrapper" id="contacto">
+        <div class="order-card">
+          <div class="order-card-header">
+            <span class="order-card-icon">✉️</span>
+            <h2 data-i18n="formTitle">Haz tu pedido</h2>
+            <p data-i18n="formSubtitle">Rellena el formulario y te contactaremos para confirmar tu encargo.</p>
+          </div>
+          <div class="order-card-body">
+            <form id="orderForm" action="https://formspree.io/f/" method="POST">
+              <div class="form-grid">
+                <label class="form-label"><span data-i18n="labelNombre">Nombre completo</span>
+                  <input type="text" name="nombre" data-i18n-placeholder="phNombre" placeholder="Tu nombre y apellidos" required />
+                </label>
+                <label class="form-label"><span data-i18n="labelEmail">Correo electrónico</span>
+                  <input type="email" name="email" data-i18n-placeholder="phEmail" placeholder="tu@email.com" required />
+                </label>
+                <label class="form-label"><span data-i18n="labelTelefono">Teléfono</span>
+                  <input type="tel" name="telefono" data-i18n-placeholder="phTelefono" placeholder="+34 600 000 000" required
+                         pattern="^\+?\d[\d\s]{7,15}$"
+                         data-i18n-title="titleTelefono" title="Introduce un teléfono válido (9-15 dígitos, puede empezar con +)" />
+                </label>
+                <label class="form-label"><span data-i18n="labelDireccion">Dirección completa</span>
+                  <input type="text" name="direccion" data-i18n-placeholder="phDireccion" placeholder="Calle, número, piso, código postal, ciudad" required />
+                </label>
+                <div class="form-label form-label-full">
+                  <span data-i18n="labelMunecos">Muñecos que deseas encargar</span>
+                  <div class="check-select" id="checkSelect">
+                    <button type="button" class="check-select-toggle" id="checkSelectToggle">
+                      <span data-i18n="selectPlaceholder">— Selecciona uno o varios muñecos —</span>
+                      <span class="check-select-arrow">▾</span>
+                    </button>
+                    <div class="check-select-dropdown" id="checkSelectDropdown"></div>
+                  </div>
+                  <input type="hidden" name="muñecos" id="hiddenMunecos" />
+                </div>
+                <label class="form-label form-label-full"><span data-i18n="labelMensaje">Mensaje adicional (opcional)</span>
+                  <textarea name="mensaje" rows="3" data-i18n-placeholder="phMensaje" placeholder="¿Algún detalle o personalización?"></textarea>
+                </label>
+
+                <!-- Política de cancelación -->
+                <div class="form-label-full cancellation-policy">
+                  <div class="policy-text">
+                    <span class="policy-icon">⚠️</span>
+                    <p data-i18n-html="policyWarning"><strong>Política de cancelación:</strong> Dado que cada muñeco se elabora artesanalmente bajo pedido, en caso de cancelación antes de finalizar la confección, se retendrá el <strong>70 %</strong> del importe como compensación por materiales y trabajo invertido, devolviéndose únicamente el <strong>30 %</strong> del precio. <em>Ejemplo: si una figura cuesta 20 €, se le devolverán 6 €.</em></p>
+                  </div>
+                  <div>
+                    <p data-i18n-html="policyBizum">El pago se realizará vía <strong>Bizum</strong> al número de teléfono: <strong>0123456789</strong></p>
+                  </div>
+                  <label class="consent-label">
+                    <input type="checkbox" id="consentCheck" name="consentimiento" value="Aceptado" />
+                    <span data-i18n-html="consentLabel">He leído y acepto la <a href="#" id="openPolicyModal" class="policy-link">política de consentimiento y cancelación</a></span>
+                  </label>
+                </div>
+              </div>
+              <button type="submit" class="form-submit" id="submitBtn" disabled data-i18n="btnEnviar">Enviar pedido ✉️</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p data-i18n="footer">mCrochet © 2026 — Taller artesanal. Pedidos personalizados por mensaje directo.</p>
+    </footer>
+  </div>
+
+  <!-- Modal política de cancelación -->
+  <div class="policy-modal-overlay" id="policyModalOverlay">
+    <div class="policy-modal">
+      <button class="policy-modal-close" id="closePolicyModal" aria-label="Cerrar">&times;</button>
+      <div class="policy-modal-header">
+        <span class="policy-modal-icon">📋</span>
+        <h3 data-i18n="modalTitle">Política de consentimiento y cancelación</h3>
+      </div>
+      <div class="policy-modal-body">
+        <p data-i18n-html="modalIntro">Al realizar un pedido en <strong>mCrochet</strong>, acepta las siguientes condiciones relativas al consentimiento y cancelación:</p>
+        <ol>
+          <li data-i18n-html="modalLi1"><strong>Trabajo artesanal:</strong> Cada muñeco se elabora íntegramente a mano, desde la selección de materiales hasta el acabado final. El proceso comienza inmediatamente tras confirmar el pedido.</li>
+          <li data-i18n-html="modalLi2"><strong>Cancelación antes de finalizar:</strong> Si el cliente decide cancelar el pedido antes de que el muñeco esté terminado, se le devolverá únicamente el <strong>30 %</strong> del importe total abonado. El <strong>70 %</strong> restante se retendrá como compensación por los materiales utilizados y el tiempo de trabajo invertido.</li>
+          <li data-i18n-html="modalLi3"><strong>Ejemplo práctico:</strong> Para un muñeco con un precio de <strong>20 €</strong>, en caso de cancelación se devolverán <strong>6 €</strong> y se retendrán <strong>14 €</strong>.</li>
+          <li data-i18n-html="modalLi4"><strong>Pedido finalizado:</strong> Una vez el muñeco esté terminado y listo para envío, no se aceptarán cancelaciones ni se realizarán devoluciones.</li>
+          <li data-i18n-html="modalLi5"><strong>Forma de pago:</strong> El pago del pedido se realizará exclusivamente a través de <strong>Bizum</strong>.<br><strong>No se comenzará el pedido hasta no verificar el pago.</strong></li>
+          <li data-i18n-html="modalLi6"><strong>Aceptación:</strong> Al marcar la casilla de consentimiento y enviar el formulario, el cliente confirma que ha leído, comprendido y aceptado esta política de cancelación.</li>
+        </ol>
+        <p class="policy-note" data-i18n="modalNote">Si tiene cualquier duda, no dude en consultarnos antes de realizar su pedido.</p>
+      </div>
+      <button class="policy-modal-accept" id="acceptPolicyBtn" data-i18n="modalAccept">Entendido</button>
+    </div>
+  </div>
+
+  <!-- Three.js desde CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+  <!-- i18n (debe cargarse ANTES de app.js) -->
+  <script src="js/i18n.js"></script>
+  <!-- Lógica de la tienda + fondo animado -->
+  <script src="js/app.js"></script>
+</body>
+</html>
