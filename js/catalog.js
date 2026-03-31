@@ -1,0 +1,64 @@
+/* ═══════════════════════════════════════════
+   mCrochet — catalog.js
+   Catálogo de productos.
+   Para añadir un producto nuevo:
+   1. Pon la imagen en la carpeta img/
+   2. Añade una entrada aquí abajo
+   ═══════════════════════════════════════════ */
+var catalogData = [
+  {
+    id: 1,
+    name: "Conejita Luna",
+    category: "Animales",
+    price: 29.90,
+    stock: 6,
+    image: "img/conejita-luna.svg",
+    description: { es: "Muñeca tejida a mano con vestido rosa pastel.", en: "Hand-knitted doll with a pastel pink dress." }
+  },
+  {
+    id: 2,
+    name: "Oso Mateo",
+    category: "Animales",
+    price: 31.50,
+    stock: 4,
+    image: "img/oso-mateo.svg",
+    description: { es: "Oso de crochet con bufanda suave y relleno hipoalergénico.", en: "Crochet bear with a soft scarf and hypoallergenic filling." }
+  },
+  {
+    id: 3,
+    name: "Sirena Coral",
+    category: "Fantasía",
+    price: 34.00,
+    stock: 3,
+    image: "img/sirena-coral.svg",
+    description: { es: "Sirena amigurumi con detalles de estrellas marinas.", en: "Amigurumi mermaid with starfish details." }
+  },
+  {
+    id: 4,
+    name: "Dino Pepo",
+    category: "Fantasía",
+    price: 27.50,
+    stock: 8,
+    image: "img/dino-pepo.svg",
+    description: { es: "Pequeño dinosaurio ideal para regalo infantil.", en: "Small dinosaur ideal as a children's gift." }
+  },
+  {
+    id: 5,
+    name: "Frida Crochet",
+    category: "Colección",
+    price: 38.90,
+    stock: 2,
+    image: "img/frida-crochet.svg",
+    description: { es: "Pieza decorativa inspirada en arte latinoamericano.", en: "Decorative piece inspired by Latin American art." }
+  },
+  {
+    id: 6,
+    name: "Mini Nube",
+    category: "Bebés",
+    price: 22.00,
+    stock: 10,
+    image: "img/mini-nube.svg",
+    description: { es: "Sonajero tejido para cuna, muy ligero y suave.", en: "Knitted rattle for cots, very light and soft." }
+  }
+];
+

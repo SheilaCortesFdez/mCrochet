@@ -4,47 +4,35 @@
    Three.js se carga como <script> global (THREE)
    ═══════════════════════════════════════════ */
 
-/* ═══════════ DATOS ═══════════ */
-var products = [
-  { id: 1, name: "Conejita Luna", category: "Animales", price: 29.9, stock: 6,
-    image: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320"><rect width="400" height="320" fill="#fff3f7"/><circle cx="200" cy="170" r="72" fill="#ffd2de"/><ellipse cx="165" cy="80" rx="26" ry="56" fill="#ffd2de"/><ellipse cx="235" cy="80" rx="26" ry="56" fill="#ffd2de"/><circle cx="174" cy="166" r="8" fill="#7b4970"/><circle cx="226" cy="166" r="8" fill="#7b4970"/><ellipse cx="200" cy="190" rx="14" ry="10" fill="#ff8fb1"/><text x="200" y="292" text-anchor="middle" font-family="Arial" font-size="24" fill="#7b4970">Conejita Luna</text></svg>'),
-    description: "Muñeca tejida a mano con vestido rosa pastel." },
-  { id: 2, name: "Oso Mateo", category: "Animales", price: 31.5, stock: 4,
-    image: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320"><rect width="400" height="320" fill="#fdf1e3"/><circle cx="200" cy="170" r="74" fill="#d6a67d"/><circle cx="145" cy="112" r="24" fill="#c78e63"/><circle cx="255" cy="112" r="24" fill="#c78e63"/><circle cx="174" cy="165" r="8" fill="#4c2f20"/><circle cx="226" cy="165" r="8" fill="#4c2f20"/><ellipse cx="200" cy="191" rx="15" ry="11" fill="#8a5a3f"/><rect x="122" y="230" width="156" height="24" rx="12" fill="#7b4970"/><text x="200" y="292" text-anchor="middle" font-family="Arial" font-size="24" fill="#6b4f65">Oso Mateo</text></svg>'),
-    description: "Oso de crochet con bufanda suave y relleno hipoalergénico." },
-  { id: 3, name: "Sirena Coral", category: "Fantasía", price: 34.0, stock: 3,
-    image: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320"><rect width="400" height="320" fill="#eef8ff"/><circle cx="200" cy="132" r="52" fill="#ffd5cc"/><path d="M200 182 C240 215 255 245 210 275 C190 289 162 285 150 262 C132 229 164 211 200 182Z" fill="#8ed6d1"/><circle cx="182" cy="130" r="6" fill="#425062"/><circle cx="218" cy="130" r="6" fill="#425062"/><path d="M188 149 Q200 159 212 149" stroke="#ff8fb1" stroke-width="4" fill="none" stroke-linecap="round"/><text x="200" y="292" text-anchor="middle" font-family="Arial" font-size="24" fill="#4f6680">Sirena Coral</text></svg>'),
-    description: "Sirena amigurumi con detalles de estrellas marinas." },
-  { id: 4, name: "Dino Pepo", category: "Fantasía", price: 27.5, stock: 8,
-    image: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320"><rect width="400" height="320" fill="#f1fff0"/><path d="M120 210 C120 130 180 92 242 110 C286 122 315 154 309 200 C304 242 265 264 218 264 C162 264 120 246 120 210Z" fill="#9ddf8c"/><circle cx="250" cy="150" r="8" fill="#385c32"/><circle cx="182" cy="150" r="6" fill="#b6e9aa"/><circle cx="166" cy="168" r="6" fill="#b6e9aa"/><circle cx="182" cy="186" r="6" fill="#b6e9aa"/><rect x="142" y="252" width="30" height="20" rx="8" fill="#8ccf7e"/><rect x="225" y="252" width="30" height="20" rx="8" fill="#8ccf7e"/><text x="200" y="292" text-anchor="middle" font-family="Arial" font-size="24" fill="#4f7a47">Dino Pepo</text></svg>'),
-    description: "Pequeño dinosaurio ideal para regalo infantil." },
-  { id: 5, name: "Frida Crochet", category: "Colección", price: 38.9, stock: 2,
-    image: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320"><rect width="400" height="320" fill="#fff4ea"/><circle cx="200" cy="160" r="72" fill="#d6a88f"/><path d="M130 132 Q200 65 270 132" stroke="#2f2a2a" stroke-width="18" fill="none" stroke-linecap="round"/><circle cx="175" cy="164" r="8" fill="#2f2a2a"/><circle cx="225" cy="164" r="8" fill="#2f2a2a"/><path d="M184 191 Q200 204 216 191" stroke="#8d3f5f" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="153" cy="95" r="10" fill="#ff8fb1"/><circle cx="175" cy="82" r="10" fill="#ffd05b"/><circle cx="199" cy="78" r="10" fill="#7ed6c2"/><circle cx="224" cy="82" r="10" fill="#d98fff"/><circle cx="248" cy="95" r="10" fill="#ff8fb1"/><text x="200" y="292" text-anchor="middle" font-family="Arial" font-size="24" fill="#6a3c4e">Frida Crochet</text></svg>'),
-    description: "Pieza decorativa inspirada en arte latinoamericano." },
-  { id: 6, name: "Mini Nube", category: "Bebés", price: 22.0, stock: 10,
-    image: "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320"><rect width="400" height="320" fill="#eef4ff"/><path d="M132 190 C118 165 139 132 171 136 C185 112 218 106 240 126 C272 118 298 139 298 168 C312 175 319 189 312 204 C303 224 277 230 254 225 L166 225 C146 230 120 218 119 198 C118 195 118 193 132 190Z" fill="#ffffff" stroke="#c8d9ff" stroke-width="4"/><circle cx="182" cy="180" r="7" fill="#5b6c8c"/><circle cx="220" cy="180" r="7" fill="#5b6c8c"/><path d="M183 198 Q201 212 219 198" stroke="#ff8fb1" stroke-width="4" fill="none" stroke-linecap="round"/><text x="200" y="292" text-anchor="middle" font-family="Arial" font-size="24" fill="#56648a">Mini Nube</text></svg>'),
-    description: "Sonajero tejido para cuna, muy ligero y suave." }
-];
+/* ═══════════ DATOS (vienen de js/catalog.js) ═══════════ */
+var products   = catalogData;
+var categories = ["Todos"];
+products.forEach(function (p) {
+  if (categories.indexOf(p.category) === -1) categories.push(p.category);
+});
 
 /* ═══════════ FILTRO ═══════════ */
+function getDesc(p) {
+  if (typeof p.description === "string") return p.description;
+  var lang = (typeof i18n !== "undefined") ? i18n.getLang() : "es";
+  return (p.description && p.description[lang]) || (p.description && p.description["es"]) || "";
+}
+
 function filterProducts(items, filters) {
   var search = (filters.search || "").trim().toLowerCase();
   var cat    = filters.category || "Todos";
   var max    = Number.isFinite(filters.maxPrice) ? filters.maxPrice : Infinity;
   return items.filter(function (p) {
     var okCat    = cat === "Todos" || p.category === cat;
-    var okSearch = !search || p.name.toLowerCase().includes(search) || p.description.toLowerCase().includes(search);
+    var okSearch = !search || p.name.toLowerCase().includes(search) || getDesc(p).toLowerCase().includes(search);
     var okPrice  = p.price <= max;
     return okCat && okSearch && okPrice;
   });
 }
 
 /* ═══════════ ESTADO ═══════════ */
-var state = { search: "", category: "Todos", maxPrice: 50, cartCount: 0 };
-var categories = ["Todos"];
-products.forEach(function (p) {
-  if (categories.indexOf(p.category) === -1) categories.push(p.category);
-});
+var maxCatalogPrice = products.length ? Math.ceil(Math.max.apply(null, products.map(function (p) { return p.price; }))) : 50;
+var state = { search: "", category: "Todos", maxPrice: maxCatalogPrice, cartCount: 0 };
 
 
 /* ═══════════ REFERENCIAS DOM ═══════════ */
@@ -54,6 +42,10 @@ var priceInput    = document.getElementById("priceInput");
 var priceValue    = document.getElementById("priceValue");
 var cartCountEl   = document.getElementById("cartCount");
 var categoryChips = document.getElementById("categoryChips");
+
+/* Ajustar slider al precio máximo del catálogo */
+priceInput.max   = maxCatalogPrice;
+priceInput.value = maxCatalogPrice;
 
 /* ═══════════ RENDER ═══════════ */
 function renderCategories() {
@@ -69,15 +61,18 @@ function renderProducts() {
     return;
   }
   productsGrid.innerHTML = visible.map(function (item) {
+    var desc = getDesc(item);
+    var catLabel = typeof i18n !== "undefined" ? i18n.tCat(item.category) : item.category;
+    var stockLbl = typeof i18n !== "undefined" ? i18n.t("stockLabel") : "Stock";
     return '<article class="card">' +
       '<img src="' + item.image + '" alt="' + item.name + '" loading="lazy" />' +
       '<div class="card-content">' +
-        '<p class="category">' + item.category + '</p>' +
+        '<p class="category">' + catLabel + '</p>' +
         '<h2>' + item.name + '</h2>' +
-        '<p class="description">' + item.description + '</p>' +
+        '<p class="description">' + desc + '</p>' +
         '<p class="price">' + item.price.toFixed(2) + ' €</p>' +
         '<div class="card-actions">' +
-          '<span>Stock: ' + item.stock + '</span>' +
+          '<span>' + stockLbl + ': ' + item.stock + '</span>' +
         '</div>' +
       '</div>' +
     '</article>';
@@ -122,16 +117,21 @@ var checkSelectToggle   = document.getElementById("checkSelectToggle");
 var checkSelect         = document.getElementById("checkSelect");
 var hiddenMunecos       = document.getElementById("hiddenMunecos");
 
-/* Generar checkboxes */
-products.forEach(function (p) {
-  var item = document.createElement("label");
-  item.className = "check-select-item";
-  item.innerHTML =
-    '<input type="checkbox" value="' + p.name + ' (' + p.price.toFixed(2) + ' €)" />' +
-    '<span class="check-select-name">' + p.name + '</span>' +
-    '<span class="check-select-price">' + p.price.toFixed(2) + ' €</span>';
-  checkSelectDropdown.appendChild(item);
-});
+/* Generar checkboxes a partir de los productos */
+function buildCheckboxes() {
+  checkSelectDropdown.innerHTML = "";
+  products.forEach(function (p) {
+    var item = document.createElement("label");
+    item.className = "check-select-item";
+    item.innerHTML =
+      '<input type="checkbox" value="' + p.name + ' (' + p.price.toFixed(2) + ' €)" />' +
+      '<span class="check-select-name">' + p.name + '</span>' +
+      '<span class="check-select-price">' + p.price.toFixed(2) + ' €</span>';
+    checkSelectDropdown.appendChild(item);
+  });
+}
+
+buildCheckboxes();
 
 /* Toggle abrir / cerrar */
 checkSelectToggle.addEventListener("click", function () {

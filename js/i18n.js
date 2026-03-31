@@ -36,14 +36,6 @@ var i18n = (function () {
       catColeccion: "Colección",
       catBebes:     "Bebés",
 
-      /* Productos — descripciones */
-      descConejita: "Muñeca tejida a mano con vestido rosa pastel.",
-      descOso:      "Oso de crochet con bufanda suave y relleno hipoalergénico.",
-      descSirena:   "Sirena amigurumi con detalles de estrellas marinas.",
-      descDino:     "Pequeño dinosaurio ideal para regalo infantil.",
-      descFrida:    "Pieza decorativa inspirada en arte latinoamericano.",
-      descNube:     "Sonajero tejido para cuna, muy ligero y suave.",
-
       /* Cards */
       stockLabel: "Stock",
       noResults:  "No hay resultados para los filtros actuales.",
@@ -123,12 +115,6 @@ var i18n = (function () {
       catColeccion: "Collection",
       catBebes:     "Babies",
 
-      descConejita: "Hand-knitted doll with a pastel pink dress.",
-      descOso:      "Crochet bear with a soft scarf and hypoallergenic filling.",
-      descSirena:   "Amigurumi mermaid with starfish details.",
-      descDino:     "Small dinosaur ideal as a children's gift.",
-      descFrida:    "Decorative piece inspired by Latin American art.",
-      descNube:     "Knitted rattle for cots, very light and soft.",
 
       stockLabel: "Stock",
       noResults:  "No results for the current filters.",
@@ -190,16 +176,6 @@ var i18n = (function () {
     "Bebés":     "catBebes"
   };
 
-  /* ── Mapa de descripción por id de producto ── */
-  var descKeyMap = {
-    1: "descConejita",
-    2: "descOso",
-    3: "descSirena",
-    4: "descDino",
-    5: "descFrida",
-    6: "descNube"
-  };
-
   /* ── Obtener texto ── */
   function t(key, replacements) {
     var text = dict[currentLang][key] || dict["es"][key] || key;
@@ -216,11 +192,6 @@ var i18n = (function () {
     var key = catKeyMap[internalName];
     return key ? t(key) : internalName;
   }
-
-  /* ── Traducir descripción de producto ── */
-  function tDesc(productId) {
-    var key = descKeyMap[productId];
-    return key ? t(key) : "";
   }
 
   /* ── Aplicar traducciones a todos los elementos con data-i18n ── */
@@ -290,7 +261,6 @@ var i18n = (function () {
   return {
     t: t,
     tCat: tCat,
-    tDesc: tDesc,
     getLang: getLang,
     setLang: setLang,
     init: init,
