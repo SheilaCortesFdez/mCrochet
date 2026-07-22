@@ -256,11 +256,6 @@ if (pedidoWhatsappBtn) {
 
     var munecos = hiddenMunecos.value;
 
-    if (!munecos) {
-      alert("Selecciona al menos un muñeco antes de hacer el pedido.");
-      return;
-    }
-
     var url = "/.netlify/functions/pedido?producto=" + encodeURIComponent(munecos);
 console.log("URL enviada:", url);
     window.open(url, "_blank");
