@@ -247,6 +247,25 @@ checkSelectDropdown.addEventListener("change", function () {
   /* (el hiddenMunecos ya se actualiza en el listener anterior) */
   setTimeout(validateForm, 0); /* ejecutar después de que el otro listener actualice hiddenMunecos */
 });
+/* ═══════════ PEDIDO POR WHATSAPP ═══════════ */
+
+var pedidoWhatsappBtn = document.getElementById("pedidoWhatsapp");
+
+if (pedidoWhatsappBtn) {
+  pedidoWhatsappBtn.addEventListener("click", function () {
+
+    var munecos = hiddenMunecos.value;
+
+    if (!munecos) {
+      alert("Selecciona al menos un muñeco antes de hacer el pedido.");
+      return;
+    }
+
+    var url = "/.netlify/functions/pedido?producto=" + encodeURIComponent(munecos);
+
+    window.open(url, "_blank");
+  });
+}
 
 /* Abrir modal — delegación porque el enlace se re-crea al cambiar idioma */
 document.addEventListener("click", function (e) {
