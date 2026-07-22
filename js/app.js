@@ -200,7 +200,7 @@ checkSelectDropdown.addEventListener("change", function () {
   var names = [];
   checked.forEach(function (cb) { names.push(cb.value); });
   hiddenMunecos.value = names.join(", ");
-
+console.log("Seleccionados:", hiddenMunecos.value);
   if (names.length === 0) {
     checkSelectToggle.firstChild.textContent = "— Selecciona uno o varios muñecos — ";
   } else {
@@ -262,7 +262,7 @@ if (pedidoWhatsappBtn) {
     }
 
     var url = "/.netlify/functions/pedido?producto=" + encodeURIComponent(munecos);
-
+console.log("URL enviada:", url);
     window.open(url, "_blank");
   });
 }
