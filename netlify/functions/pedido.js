@@ -1,29 +1,14 @@
-exports.handler = async function () {
+exports.handler = async function (event) {
 
-  const numero = "34604094870";
-  const mensaje = encodeURIComponent(
-    "Hola, me interesa encargar un muñeco de mCrochet."
+  var producto = event.queryStringParameters?.producto || "un muñeco";
+  var mensaje = encodeURIComponent(
+    "Hola, me interesa encargar: " + producto + " de mCrochet."
   );
 
   return {
-    statusCode: 200,
+    statusCode: 302,
     headers: {
-      "Content-Type": "text/html"
-    },
-    body: `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset="UTF-8">
-        <title>mCrochet</title>
-      </head>
-      <body>
-        <p>Abriendo WhatsApp...</p>
-        <script>
-          window.location.href="https://wa.me/${numero}?text=${mensaje}";
-        </script>
-      </body>
-      </html>
-    `
+      Location: "https://wa.me/615913679?text=" + mensaje
+    }
   };
 };
