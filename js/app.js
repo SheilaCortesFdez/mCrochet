@@ -314,7 +314,7 @@ orderForm.addEventListener("submit", function (e) {
   submitBtn.disabled = true;
   submitBtn.textContent = "Enviando...";
 
-  fetch(form.action, {
+  fetch(form.dataset.endpoint, {
     method: "POST",
     body: data,
     headers: { "Accept": "application/json" }
