@@ -47,71 +47,73 @@
       <section class="products" id="productsGrid" aria-live="polite"></section>
 
       <!-- Formulario de pedido -->
-      <section class="order-form-wrapper" id="contacto">
-        <div class="order-card">
-          <div class="order-card-header">
-            <span class="order-card-icon">✉️</span>
-            <h2 data-i18n="formTitle">Haz tu pedido</h2>
-            <p data-i18n="formSubtitle">Rellena el formulario y te contactaremos para confirmar tu encargo.</p>
-          </div>
-          <div class="order-card-body">
-            <form id="orderForm" action="https://formspree.io/f/" method="POST">
-              <div class="form-grid">
-                <label class="form-label"><span data-i18n="labelNombre">Nombre completo</span>
-                  <input type="text" name="nombre" data-i18n-placeholder="phNombre" placeholder="Tu nombre y apellidos" required />
-                </label>
-                <label class="form-label"><span data-i18n="labelEmail">Correo electrónico</span>
-                  <input type="email" name="email" data-i18n-placeholder="phEmail" placeholder="tu@email.com" required />
-                </label>
-                <label class="form-label"><span data-i18n="labelTelefono">Teléfono</span>
-                  <input type="tel" name="telefono" data-i18n-placeholder="phTelefono" placeholder="+34 600 000 000" required
-                         pattern="^\+?\d[\d\s]{7,15}$"
-                         data-i18n-title="titleTelefono" title="Introduce un teléfono válido (9-15 dígitos, puede empezar con +)" />
-                </label>
-                <label class="form-label"><span data-i18n="labelDireccion">Dirección completa</span>
-                  <input type="text" name="direccion" data-i18n-placeholder="phDireccion" placeholder="Calle, número, piso, código postal, ciudad" required />
-                </label>
-                <div class="form-label form-label-full">
-                  <span data-i18n="labelMunecos">Muñecos que deseas encargar</span>
-                  <div class="check-select" id="checkSelect">
-                    <button type="button" class="check-select-toggle" id="checkSelectToggle">
-                      <span data-i18n="selectPlaceholder">— Selecciona uno o varios muñecos —</span>
-                      <span class="check-select-arrow">▾</span>
-                    </button>
-                    <div class="check-select-dropdown" id="checkSelectDropdown"></div>
-                  </div>
-                  <input type="hidden" name="muñecos" id="hiddenMunecos" />
-                </div>
-                <label class="form-label form-label-full"><span data-i18n="labelMensaje">Mensaje adicional (opcional)</span>
-                  <textarea name="mensaje" rows="3" data-i18n-placeholder="phMensaje" placeholder="¿Algún detalle o personalización?"></textarea>
-                </label>
-
-                <!-- Política de cancelación -->
-                <div class="form-label-full cancellation-policy">
-                  <div class="policy-text">
-                    <span class="policy-icon">⚠️</span>
-                    <p data-i18n-html="policyWarning"><strong>Política de cancelación:</strong> Dado que cada muñeco se elabora artesanalmente bajo pedido, en caso de cancelación antes de finalizar la confección, se retendrá el <strong>70 %</strong> del importe como compensación por materiales y trabajo invertido, devolviéndose únicamente el <strong>30 %</strong> del precio. <em>Ejemplo: si una figura cuesta 20 €, se le devolverán 6 €.</em></p>
-                  </div>
-                  <div>
-                    <p data-i18n-html="policyBizum">El pago se realiza por <strong>Bizum</strong>. Haz clic en
-                      <strong>
-                        <a href="/.netlify/functions/pedido" target="_blank" id="pedidoWhatsapp">
-                          Hacer pedido por WhatsApp
-                        </a>
-                      </strong> y te facilitaré los datos de pago una vez confirmemos el pedido.</p>
-
-                  </div>
-                  <label class="consent-label">
-                    <input type="checkbox" id="consentCheck" name="consentimiento" value="Aceptado" />
-                    <span data-i18n-html="consentLabel">He leído y acepto la <a href="#" id="openPolicyModal" class="policy-link">política de consentimiento y cancelación</a></span>
+      <form id="contact-form" class="contact-form" data-endpoint="https://formspree.io/f/xzdnyzgl" method="POST">
+        <section class="order-form-wrapper" id="contacto">
+          <div class="order-card">
+            <div class="order-card-header">
+              <span class="order-card-icon">✉️</span>
+              <h2 data-i18n="formTitle">Haz tu pedido</h2>
+              <p data-i18n="formSubtitle">Rellena el formulario y te contactaremos para confirmar tu encargo.</p>
+            </div>
+            <div class="order-card-body">
+              <form id="orderForm" action="https://formspree.io/f/" method="POST">
+                <div class="form-grid">
+                  <label class="form-label"><span data-i18n="labelNombre">Nombre completo</span>
+                    <input type="text" name="nombre" data-i18n-placeholder="phNombre" placeholder="Tu nombre y apellidos" required />
                   </label>
+                  <label class="form-label"><span data-i18n="labelEmail">Correo electrónico</span>
+                    <input type="email" name="email" data-i18n-placeholder="phEmail" placeholder="tu@email.com" required />
+                  </label>
+                  <label class="form-label"><span data-i18n="labelTelefono">Teléfono</span>
+                    <input type="tel" name="telefono" data-i18n-placeholder="phTelefono" placeholder="+34 600 000 000" required
+                           pattern="^\+?\d[\d\s]{7,15}$"
+                           data-i18n-title="titleTelefono" title="Introduce un teléfono válido (9-15 dígitos, puede empezar con +)" />
+                  </label>
+                  <label class="form-label"><span data-i18n="labelDireccion">Dirección completa</span>
+                    <input type="text" name="direccion" data-i18n-placeholder="phDireccion" placeholder="Calle, número, piso, código postal, ciudad" required />
+                  </label>
+                  <div class="form-label form-label-full">
+                    <span data-i18n="labelMunecos">Muñecos que deseas encargar</span>
+                    <div class="check-select" id="checkSelect">
+                      <button type="button" class="check-select-toggle" id="checkSelectToggle">
+                        <span data-i18n="selectPlaceholder">— Selecciona uno o varios muñecos —</span>
+                        <span class="check-select-arrow">▾</span>
+                      </button>
+                      <div class="check-select-dropdown" id="checkSelectDropdown"></div>
+                    </div>
+                    <input type="hidden" name="muñecos" id="hiddenMunecos" />
+                  </div>
+                  <label class="form-label form-label-full"><span data-i18n="labelMensaje">Mensaje adicional (opcional)</span>
+                    <textarea name="mensaje" rows="3" data-i18n-placeholder="phMensaje" placeholder="¿Algún detalle o personalización?"></textarea>
+                  </label>
+
+                  <!-- Política de cancelación -->
+                  <div class="form-label-full cancellation-policy">
+                    <div class="policy-text">
+                      <span class="policy-icon">⚠️</span>
+                      <p data-i18n-html="policyWarning"><strong>Política de cancelación:</strong> Dado que cada muñeco se elabora artesanalmente bajo pedido, en caso de cancelación antes de finalizar la confección, se retendrá el <strong>70 %</strong> del importe como compensación por materiales y trabajo invertido, devolviéndose únicamente el <strong>30 %</strong> del precio. <em>Ejemplo: si una figura cuesta 20 €, se le devolverán 6 €.</em></p>
+                    </div>
+                    <div>
+                      <p data-i18n-html="policyBizum">El pago se realiza por <strong>Bizum</strong>. Haz clic en
+                        <strong>
+                          <a href="/.netlify/functions/pedido" target="_blank" id="pedidoWhatsapp">
+                            Hacer pedido por WhatsApp
+                          </a>
+                        </strong> y te facilitaré los datos de pago una vez confirmemos el pedido.</p>
+
+                    </div>
+                    <label class="consent-label">
+                      <input type="checkbox" id="consentCheck" name="consentimiento" value="Aceptado" />
+                      <span data-i18n-html="consentLabel">He leído y acepto la <a href="#" id="openPolicyModal" class="policy-link">política de consentimiento y cancelación</a></span>
+                    </label>
+                  </div>
                 </div>
-              </div>
-              <button type="submit" class="form-submit" id="submitBtn" disabled data-i18n="btnEnviar">Enviar pedido ✉️</button>
-            </form>
+                <button type="submit" class="form-submit" id="submitBtn" disabled data-i18n="btnEnviar">Enviar pedido ✉️</button>
+              </form>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </form>
     </main>
 
     <footer>
