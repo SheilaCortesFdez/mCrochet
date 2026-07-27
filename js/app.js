@@ -314,12 +314,20 @@ orderForm.addEventListener("submit", function (e) {
   submitBtn.disabled = true;
   submitBtn.textContent = "Enviando...";
 
+  console.log("Formulario:", form);
+  console.log("Endpoint:", form.dataset.endpoint);
+  console.log("Action:", form.action);
+
   fetch(form.dataset.endpoint, {
     method: "POST",
     body: data,
     headers: { "Accept": "application/json" }
-  }).then(function (res) {
-    if (res.ok) {
+  }).then(async function (res) {
+
+      console.log("Estado Formspree:", res.status);
+      console.log("Respuesta Formspree:", await res.text());
+
+      if (res.ok) {
       form.reset();
       /* Resetear checkboxes de muñecos */
       checkSelectDropdown.querySelectorAll("input:checked").forEach(function (cb) { cb.checked = false; });
