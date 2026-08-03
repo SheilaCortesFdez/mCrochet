@@ -11,13 +11,13 @@ var i18n = (function () {
   var dict = {
     es: {
       /* Meta */
-      pageTitle: "mCrochet | Tienda de muñecos de crochet",
+      pageTitle: "Mamen Crochet | Tienda de muñecos de crochet",
 
       /* Nav */
       navCatalogo:    "Catálogo",
-      navGaleria:     "Galería",
       navColecciones: "Colecciones",
       navContacto:    "Contacto",
+      navSobreMi:     "Sobre mí",
 
       /* Hero */
       heroTitle: "Muñecos de crochet hechos a mano",
@@ -31,10 +31,10 @@ var i18n = (function () {
 
       /* Categorías */
       catTodos:     "Todos",
-      catAnimales:  "Animales",
       catFantasia:  "Fantasía",
-      catColeccion: "Colección",
-      catBebes:     "Bebés",
+      catMuñeca:    "Muñeca/o",
+      catAnimales:  "Animal",
+
 
       /* Cards */
       stockLabel: "Stock",
@@ -76,7 +76,7 @@ var i18n = (function () {
 
       /* Modal */
       modalTitle:  "Política de consentimiento y cancelación",
-      modalIntro:  'Al realizar un pedido en <strong>mCrochet</strong>, acepta las siguientes condiciones relativas al consentimiento y cancelación:',
+      modalIntro:  'Al realizar un pedido en <strong>Mamen Crochet</strong>, acepta las siguientes condiciones relativas al consentimiento y cancelación:',
       modalLi1:    '<strong>Trabajo artesanal:</strong> Cada muñeco se elabora íntegramente a mano, desde la selección de materiales hasta el acabado final. El proceso comienza inmediatamente tras confirmar el pedido.',
       modalLi2:    '<strong>Cancelación antes de finalizar:</strong> Si el cliente decide cancelar el pedido antes de que el muñeco esté terminado, se le devolverá únicamente el <strong>30 %</strong> del importe total abonado. El <strong>70 %</strong> restante se retendrá como compensación por los materiales utilizados y el tiempo de trabajo invertido.',
       modalLi3:    '<strong>Ejemplo práctico:</strong> Para un muñeco con un precio de <strong>20 €</strong>, en caso de cancelación se devolverán <strong>6 €</strong> y se retendrán <strong>14 €</strong>.',
@@ -87,17 +87,16 @@ var i18n = (function () {
       modalAccept: "Entendido",
 
       /* Footer */
-      footer: "mCrochet © 2026 — Taller artesanal. Pedidos personalizados por mensaje directo.",
+      footer: "Mamen Crochet © 2026 — Taller artesanal. Pedidos personalizados por mensaje directo.",
 
       /* Botón idioma */
       langSwitch: "EN 🇬🇧"
     },
 
     en: {
-      pageTitle: "mCrochet | Handmade Crochet Dolls Shop",
+      pageTitle: "Mamen Crochet | Handmade Crochet Dolls Shop",
 
       navCatalogo:    "Catalogue",
-      navGaleria:     "Gallery",
       navColecciones: "Collections",
       navContacto:    "Contact",
 
@@ -151,7 +150,7 @@ var i18n = (function () {
       seleccionadoN: "selected",
 
       modalTitle:  "Consent and cancellation policy",
-      modalIntro:  'By placing an order at <strong>mCrochet</strong>, you accept the following conditions regarding consent and cancellation:',
+      modalIntro:  'By placing an order at <strong>Mamen Crochet</strong>, you accept the following conditions regarding consent and cancellation:',
       modalLi1:    '<strong>Handcrafted work:</strong> Each doll is made entirely by hand, from the selection of materials to the final finish. The process begins immediately after confirming the order.',
       modalLi2:    '<strong>Cancellation before completion:</strong> If the customer decides to cancel the order before the doll is finished, only <strong>30 %</strong> of the total amount paid will be refunded. The remaining <strong>70 %</strong> will be retained as compensation for materials used and time invested.',
       modalLi3:    '<strong>Practical example:</strong> For a doll priced at <strong>20 €</strong>, in case of cancellation, <strong>6 €</strong> will be refunded and <strong>14 €</strong> will be retained.',
@@ -161,7 +160,7 @@ var i18n = (function () {
       modalNote:   "If you have any questions, please do not hesitate to contact us before placing your order.",
       modalAccept: "Understood",
 
-      footer: "mCrochet © 2026 — Artisan workshop. Custom orders via direct message.",
+      footer: "Mamen Crochet © 2026 — Artisan workshop. Custom orders via direct message.",
 
       langSwitch: "ES 🇪🇸"
     }
@@ -225,7 +224,7 @@ var i18n = (function () {
   /* ── Cambiar idioma ── */
   function setLang(lang) {
     currentLang = lang;
-    localStorage.setItem("mcrochet-lang", lang);
+    localStorage.setItem("Mamen crochet-lang", lang);
     applyStatic();
 
     /* Disparar evento para que app.js re-renderice */

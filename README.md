@@ -1,4 +1,4 @@
-# mCrochet - Tienda de crochet con Three.js
+# Mamen Crochet - Tienda de crochet con Three.js
 
 Tienda online de muñecos de crochet. **Sin Node, sin Python, sin servidor, sin bundler.**
 

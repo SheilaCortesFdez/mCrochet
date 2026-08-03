@@ -2,7 +2,7 @@ exports.handler = async function (event) {
 
   var producto = event.queryStringParameters?.producto || "un muñeco";
   var mensaje = encodeURIComponent(
-    "Hola, me interesa encargar: " + producto + " de mCrochet."
+    "Hola, me interesa encargar: " + producto + " de Mamen Crochet."
   );
 
   return {

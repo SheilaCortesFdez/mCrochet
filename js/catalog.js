@@ -113,6 +113,15 @@ var catalogData = [
      stock: 1,
      image: "img/ricitosDeOro.jpg",
      description: { es: "Niña curiosa, traviesa y dulce apariencia, famosa por su larga y brillante cabellera rubia y rizada.", en: "A curious, mischievous girl with a sweet appearance, famous for her long, shiny, curly blonde hair." }
+   },
+   {
+       id: 13,
+       name: "Niño Dj",
+       category: "Muñeco",
+       price: 22.00,
+       stock: 1,
+       image: "img/rapero.jpg",
+       description: { es: "Este pequeño aventurero de crochet está listo para llenar de música y alegría cualquier rincón de la casa. Tejido completamente a mano, puntada a puntada, es una pieza única creada con paciencia, dedicación y mucho amor.", en: "This little crochet adventurer is ready to fill any corner of the home with music and joy. Entirely handmade, stitch by stitch, it is a unique piece created with patience, dedication, and lots of love." }
    }
 ];
 
